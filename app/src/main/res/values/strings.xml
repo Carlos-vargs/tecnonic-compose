@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">tecnonic-compose</string>
+    <string name="title_activity_loading">Loading</string>
+    <string name="title_activity_login">Login</string>
 </resources>
