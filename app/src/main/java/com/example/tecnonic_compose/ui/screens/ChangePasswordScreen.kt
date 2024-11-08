@@ -1,19 +1,17 @@
 package com.example.tecnonic_compose.ui.screens
 
-
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-//import androidx.navigation.NavController
 import com.example.tecnonic_compose.ui.components.PasswordInputField
 import com.example.tecnonic_compose.ui.components.Header
 
 @Composable
 fun ChangePasswordScreen() {
-    //navController: NavController
     var currentPassword by remember { mutableStateOf("") }
     var newPassword by remember { mutableStateOf("") }
     var confirmPassword by remember { mutableStateOf("") }
@@ -29,7 +27,6 @@ fun ChangePasswordScreen() {
             title = "Cambiar Contraseña",
             onBackPressed = {  }
         )
-        // onBackPressed = { navController.popBackStack() }
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -87,4 +84,8 @@ fun ChangePasswordScreen() {
     }
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun PreviewChangePasswordScreen() {
+    ChangePasswordScreen()
+}
