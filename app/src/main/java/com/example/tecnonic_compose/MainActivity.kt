@@ -27,24 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            TecnoniccomposeTheme {
-                SplashScreen(onTimeout = {
-                    startActivity(Intent(this, MainScreenActivity::class.java))
-                    finish()
-                })
-            }
-        }
-    }
-}
-
-// Nueva actividad para la pantalla principal
-class MainScreenActivity : ComponentActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContent {
-            TecnoniccomposeTheme {
-                MainScreen()
-            }
+           MainScreen()
         }
     }
 }
@@ -81,10 +64,6 @@ fun SplashScreen(onTimeout: () -> Unit) {
     }
 }
 
-@Composable
-fun MainScreen() {
-    Text(text = "Bienvenido a Sentinel Prime", fontSize = 24.sp, modifier = Modifier.fillMaxSize())
-}
 
 @Preview(showBackground = true, showSystemUi = true)
 @Composable

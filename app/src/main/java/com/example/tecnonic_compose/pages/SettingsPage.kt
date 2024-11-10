@@ -61,7 +61,7 @@ fun SettingsPage() {
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.ic_settings),
+                    painter = painterResource(id = R.drawable.ic_logout),
                     contentDescription = "Opciones",
                     tint = Color.Gray,
                     modifier = Modifier.size(24.dp)
@@ -119,7 +119,7 @@ fun SettingsItem(title: String, value: String? = null) {
             )
         }
         Icon(
-            painter = painterResource(id = R.drawable.ic_lock),
+            painter = painterResource(id = R.drawable.ic_arrow),
             contentDescription = "Siguiente",
             tint = Color.Gray,
             modifier = Modifier.size(24.dp) // Aumento de tamaño para los iconos

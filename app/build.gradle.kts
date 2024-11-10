@@ -76,5 +76,12 @@ dependencies {
     implementation ("androidx.compose.ui:ui-tooling-preview:1.5.1")
     implementation ("androidx.compose.foundation:foundation:1.5.1")
 
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    // Coroutines
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    // https://mvnrepository.com/artifact/io.coil-kt/coil-compose
+    implementation("io.coil-kt:coil-compose:2.7.0")
 
 }
