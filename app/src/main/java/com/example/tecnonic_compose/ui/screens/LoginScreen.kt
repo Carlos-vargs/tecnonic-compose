@@ -1,5 +1,7 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
+import androidx.annotation.MainThread
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -16,6 +18,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -24,8 +27,12 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.tecnonic_compose.MainActivity
+import com.example.tecnonic_compose.SettingActivity
+
 @Composable
 fun LoginScreen() {
+    val context = LocalContext.current  // Obtiene el contexto de la aplicación
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -126,7 +133,11 @@ fun LoginScreen() {
         Spacer(modifier = Modifier.height(32.dp))
 
         Button(
-            onClick = { /* Acción de inicio de sesión */ },
+            onClick = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("screen", "menu")
+                context.startActivity(intent)
+            },
             colors = ButtonDefaults.buttonColors(containerColor = Color.Blue),
             shape = RoundedCornerShape(10.dp),
             modifier = Modifier
