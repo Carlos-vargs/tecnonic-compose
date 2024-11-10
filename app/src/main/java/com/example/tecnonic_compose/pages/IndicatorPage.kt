@@ -1,6 +1,5 @@
 package com.example.tecnonic_compose.pages
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun Indicator(modifier: Modifier = Modifier) {
+fun IndicatorPage(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxSize(),

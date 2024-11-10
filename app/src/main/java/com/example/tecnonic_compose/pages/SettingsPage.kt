@@ -1,5 +1,6 @@
 package com.example.tecnonic_compose.pages
 
+import android.content.Intent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.clickable
@@ -15,10 +16,22 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tecnonic_compose.MainActivity
+import com.example.tecnonic_compose.MainScreen
 import com.example.tecnonic_compose.R
+import com.example.tecnonic_compose.SettingActivity
+import com.example.tecnonic_compose.ui.screens.*
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.unit.dp
 
 @Composable
 fun SettingsPage() {
+
+    val context = LocalContext.current  // Obtiene el contexto de la aplicación
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -32,20 +45,7 @@ fun SettingsPage() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Icono de Volver con fondo circular
-            Box(
-                modifier = Modifier
-                    .size(40.dp)
-                    .background(Color.Gray.copy(alpha = 0.2f), shape = CircleShape)
-                    .clickable { /* Acción de volver */ },
-                contentAlignment = Alignment.Center
-            ) {
-                Icon(
-                    painter = painterResource(id = R.drawable.ic_back),
-                    contentDescription = "Volver",
-                    tint = Color.Gray,
-                    modifier = Modifier.size(24.dp)
-                )
-            }
+
             Spacer(modifier = Modifier.weight(1f))
             Text(
                 text = "Ajustes",
@@ -76,12 +76,25 @@ fun SettingsPage() {
             fontSize = 14.sp,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        SettingsItem(title = "Lenguaje", value = "Español")
-        Divider(color = Color.LightGray, thickness = 1.dp)
-        SettingsItem(title = "Mi perfil")
-        Divider(color = Color.LightGray, thickness = 1.dp)
-        SettingsItem(title = "Contáctenos")
-        Divider(color = Color.LightGray, thickness = 1.dp)
+        SettingsItem(title = "Lenguaje", value = "Español") {
+            val intent = Intent(context, SettingActivity::class.java)
+            intent.putExtra("screen", "language")
+            context.startActivity(intent)
+        }
+        HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+
+        SettingsItem(title = "Mi perfil") {
+            val intent = Intent(context, SettingActivity::class.java)
+            intent.putExtra("screen", "profile")
+            context.startActivity(intent)
+        }
+        HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+        SettingsItem(title = "Crear usuario") {
+            val intent = Intent(context, SettingActivity::class.java)
+            intent.putExtra("screen", "register")
+            context.startActivity(intent)
+        }
+        HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
 
         // Sección Seguridad
         Spacer(modifier = Modifier.height(16.dp))
@@ -91,19 +104,30 @@ fun SettingsPage() {
             fontSize = 14.sp,
             modifier = Modifier.padding(vertical = 8.dp)
         )
-        SettingsItem(title = "Cambiar la Contraseña")
-        Divider(color = Color.LightGray, thickness = 1.dp)
-        SettingsItem(title = "Políticas de Privacidad")
+
+        SettingsItem(title = "Cambiar la Contraseña") {
+            val intent = Intent(context, SettingActivity::class.java)
+            intent.putExtra("screen", "changePassword")
+            context.startActivity(intent) }
+        HorizontalDivider(thickness = 1.dp, color = Color.LightGray)
+
+
+        SettingsItem(title = "Políticas de Privacidad") {
+            val intent = Intent(context, SettingActivity::class.java)
+            intent.putExtra("screen", "privacyPolicy")
+            context.startActivity(intent)
+
+        }
     }
 }
 
 @Composable
-fun SettingsItem(title: String, value: String? = null) {
+fun SettingsItem(title: String, value: String? = null, onClick: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 12.dp)
-            .clickable { /* Acción al hacer clic en la opción */ },
+            .clickable { onClick() },  // Ejecuta la acción cuando se hace clic
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(

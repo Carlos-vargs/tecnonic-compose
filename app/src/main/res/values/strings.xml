@@ -2,4 +2,6 @@
     <string name="app_name">Sentinel Prime</string>
     <string name="title_activity_loading">Loading</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="title_activity_setting">SettingActivity</string>
 </resources>

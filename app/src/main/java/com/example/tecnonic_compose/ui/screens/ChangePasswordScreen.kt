@@ -1,5 +1,8 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -9,6 +12,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tecnonic_compose.ui.components.PasswordInputField
 import com.example.tecnonic_compose.ui.components.Header
+
+
+
 
 @Composable
 fun ChangePasswordScreen() {

@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Badge
 import androidx.compose.material3.BadgedBox
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
@@ -23,11 +22,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import com.example.tecnonic_compose.pages.HomePage
-import com.example.tecnonic_compose.pages.Indicator
+import com.example.tecnonic_compose.pages.IndicatorPage
 import com.example.tecnonic_compose.pages.SettingsPage
 import com.example.tecnonic_compose.pages.Statistics
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
 
@@ -88,7 +86,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
 fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int) {
     when (selectedIndex) {
         0 -> HomePage()
-        1 -> Indicator()
+        1 -> IndicatorPage()
         2 -> Statistics()
         3 -> SettingsPage()
     }

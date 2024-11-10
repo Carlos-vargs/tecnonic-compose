@@ -70,6 +70,7 @@ dependencies {
     // navagation
     implementation("androidx.navigation:navigation-compose:2.7.6")
 
+
     //
     implementation ("androidx.compose.ui:ui:1.5.1")
     implementation ("androidx.compose.material:material:1.5.1")
@@ -83,5 +84,9 @@ dependencies {
     implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
     // https://mvnrepository.com/artifact/io.coil-kt/coil-compose
     implementation("io.coil-kt:coil-compose:2.7.0")
+
+
+    implementation ("androidx.compose.runtime:runtime:1.0.0")
+    implementation ("androidx.compose.foundation:foundation:1.0.0")
 
 }

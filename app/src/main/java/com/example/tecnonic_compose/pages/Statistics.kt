@@ -253,8 +253,8 @@ fun Statistics(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Estadísticas Generales del modelo tabular",
-            fontSize = 32.sp,
+            text = "Estadísticas Generales",
+            fontSize = 25.sp,
             fontWeight = FontWeight.Bold,
             color = Color(0xFF1976D2), // Un azul más profesional
             modifier = Modifier
