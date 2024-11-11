@@ -24,7 +24,7 @@ import androidx.compose.ui.res.painterResource
 import com.example.tecnonic_compose.pages.HomePage
 import com.example.tecnonic_compose.pages.IndicatorPage
 import com.example.tecnonic_compose.pages.SettingsPage
-import com.example.tecnonic_compose.pages.Statistics
+import com.example.tecnonic_compose.pages.StatisticsPage
 
 @Composable
 fun MainScreen(modifier: Modifier = Modifier) {
@@ -87,7 +87,7 @@ fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int) {
     when (selectedIndex) {
         0 -> HomePage()
         1 -> IndicatorPage()
-        2 -> Statistics()
+        2 -> StatisticsPage()
         3 -> SettingsPage()
     }
 }

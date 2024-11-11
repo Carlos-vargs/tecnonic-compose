@@ -37,8 +37,8 @@ fun LoginScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 16.dp)
-            .padding(top = 60.dp),
-        horizontalAlignment = Alignment.Start,
+            .padding(top = 60.dp , start = 15.dp, end = 15.dp),
+        horizontalAlignment = Alignment.Start
     ) {
         Spacer(modifier = Modifier.height(50.dp))
 
@@ -47,7 +47,7 @@ fun LoginScreen() {
             text = "Iniciar Sesión",
             fontSize = 32.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 24.dp)
+            modifier = Modifier.padding(bottom = 40.dp, start = 70.dp)
         )
 
         // Campo de correo electrónico personalizado

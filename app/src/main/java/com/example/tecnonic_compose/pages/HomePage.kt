@@ -160,7 +160,7 @@ fun NewClientsSection() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(start = 30.dp, end = 28.dp, bottom = 60.dp)
+            .padding(start = 30.dp, end = 28.dp, bottom = 160.dp)
     ) {
         Text(
             text = "Nuevos Clientes",

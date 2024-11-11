@@ -32,7 +32,7 @@ import retrofit2.Response
 
 
 @Composable
-fun Statistics(modifier: Modifier = Modifier) {
+fun StatisticsPage(modifier: Modifier = Modifier) {
     var kpiData by remember { mutableStateOf<List<KPIData>?>(null) }
     var isKpiLoading by remember { mutableStateOf(true) }
 
