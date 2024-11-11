@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -87,13 +88,13 @@ fun RegisterScreen() {
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .size(40.dp)
-                .background(Color.Gray, CircleShape) // Fondo circular
+                .background(Color(0xFFF4F4F4), CircleShape) // Fondo circular
                 .clickable { /* Acción de volver */ }
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = "Volver",
-                tint = Color.White, // Color del ícono
+                tint = Color.Black, // Color del ícono
                 modifier = Modifier.size(24.dp) // Tamaño del ícono
             )
         }
@@ -115,7 +116,7 @@ fun RegisterScreen() {
             onValueChange = { fullName = it },
             label = "Nombre Completo",
             placeholder = "Ejemplo: Juan Pérez",
-            leadingIcon = R.drawable.ic_lock // Reemplaza con el ícono adecuado
+            leadingIcon = R.drawable.ic_email // Reemplaza con el ícono adecuado
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -126,7 +127,7 @@ fun RegisterScreen() {
             onValueChange = { phoneNumber = it },
             label = "Número de Teléfono",
             placeholder = "+505 00000000",
-            leadingIcon = R.drawable.ic_visibility // Reemplaza con el ícono adecuado
+            leadingIcon = R.drawable.ic_phone // Reemplaza con el ícono adecuado
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -159,22 +160,12 @@ fun RegisterScreen() {
             modifier = Modifier
                 .fillMaxWidth()
                 .height(48.dp),
-            shape = MaterialTheme.shapes.medium
+            shape = RoundedCornerShape(10.dp),
         ) {
             Text(text = "Registrarse", color = Color.White)
         }
 
         Spacer(modifier = Modifier.height(16.dp))
-
-        Text(
-            text = "Ya tengo una cuenta. Iniciar Sesión",
-            color = Color.Gray,
-            fontSize = 14.sp,
-            textAlign = TextAlign.Center,
-            modifier = Modifier
-                .fillMaxWidth()
-                .clickable { /* Acción de iniciar sesión */ }
-        )
     }
 }
 

@@ -17,6 +17,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tecnonic_compose.ui.screens.ChangePasswordScreen
 import com.example.tecnonic_compose.ui.screens.LanguageScreen
+import com.example.tecnonic_compose.ui.screens.RegisterScreen
 import com.example.tecnonic_compose.ui.screens.TermsConditionsScreen
 import com.example.tecnonic_compose.ui.theme.TecnoniccomposeTheme
 
@@ -35,7 +36,7 @@ class SettingActivity : ComponentActivity() {
                     "language" -> LanguageScreen()
                     "changePassword" -> ChangePasswordScreen()
                     "privacyPolicy" -> TermsConditionsScreen()
-                    "register" -> TermsConditionsScreen()
+                    "register" -> RegisterScreen()
                     else -> DefaultScreen()
                 }
             }
