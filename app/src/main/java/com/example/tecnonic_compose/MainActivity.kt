@@ -31,28 +31,28 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val screen = intent.getStringExtra("screen") ?: "default"  // Si no se pasa ningún valor, usa "default"
+        val screen = intent.getStringExtra("screen") ?: "default"
+        val setting = intent.getStringExtra("setting") ?: "default"
+
         setContent {
             TecnoniccomposeTheme {
                 var showSplash by remember { mutableStateOf(true) }
 
-
-                    // Navigate to the correct screen based on the intent
-                    when (screen) {
-                        "menu" -> MainScreen()
-                        else ->
-                            if (showSplash) {
-                                SplashScreen(onTimeout = { showSplash = false }) // After 3 seconds, go to next screen
-                            } else {
-                                LoginScreen()
-                                }
-                            }
+                when {
+                    setting == "back" -> MainScreen(startIndex = 3)  // Navegar a "Ajuste" cuando recibe "back"
+                    screen == "menu" -> MainScreen()
+                    else -> {
+                        if (showSplash) {
+                            SplashScreen(onTimeout = { showSplash = false })
+                        } else {
+                            LoginScreen()
+                        }
                     }
-
-
+                }
             }
         }
     }
+}
 
 
 

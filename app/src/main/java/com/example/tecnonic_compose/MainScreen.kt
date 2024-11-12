@@ -27,8 +27,7 @@ import com.example.tecnonic_compose.pages.SettingsPage
 import com.example.tecnonic_compose.pages.StatisticsPage
 
 @Composable
-fun MainScreen(modifier: Modifier = Modifier) {
-
+fun MainScreen(modifier: Modifier = Modifier, startIndex: Int = 0) {
     val navItemList = listOf(
         NavItem("Inicio", painterResource(id = R.drawable.ic_iconhome), 0),
         NavItem("Indicadores", painterResource(id = R.drawable.ic_indicators), 0),
@@ -36,9 +35,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
         NavItem("Ajuste", painterResource(id = R.drawable.ic_settings), 0)
     )
 
-    var selectedIndex by remember {
-        mutableIntStateOf(0)
-    }
+    var selectedIndex by remember { mutableIntStateOf(startIndex) }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -66,7 +63,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
                         label = {
                             Text(
                                 text = navItem.label,
-                                fontSize = 12.sp,  // Set smaller font size
+                                fontSize = 12.sp,
                                 color = if (selectedIndex == index) Color.Blue else Color.Gray // Change text color
                             )
                         },
@@ -81,6 +78,7 @@ fun MainScreen(modifier: Modifier = Modifier) {
         ContentScreen(modifier = Modifier.padding(innerPadding), selectedIndex)
     }
 }
+
 
 @Composable
 fun ContentScreen(modifier: Modifier = Modifier, selectedIndex: Int) {

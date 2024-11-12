@@ -105,7 +105,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                 if (response.isSuccessful) {
                     shippingData = response.body()
                 } else {
-                    Log.e("API Error", "Shipping Response failed")
+                    Log.e("API Error", "Shipping Response failed" +  response.body())
                 }
                 isShippingLoading = false
             }

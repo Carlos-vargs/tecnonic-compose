@@ -1,7 +1,7 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -19,11 +20,12 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
+import com.example.tecnonic_compose.SettingActivity
 
 @Composable
 fun CustomOutlinedTextField(
@@ -82,21 +84,24 @@ fun RegisterScreen() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
-
+    val context = LocalContext.current  // Obtiene el contexto de la aplicación
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top =65.dp, start = 16.dp, end = 16.dp), // Ajuste de padding
+            .padding(top = 65.dp, start = 16.dp, end = 16.dp), // Ajuste de padding
         horizontalAlignment = Alignment.Start
     ) {
         // Botón de "volver" en un círculo
-        Box(
-            contentAlignment = Alignment.Center,
+        IconButton(
+            onClick = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("setting", "back")
+                context.startActivity(intent)
+            },
             modifier = Modifier
                 .size(40.dp)
                 .background(Color(0xFFF4F4F4), CircleShape) // Fondo circular
-                .clickable { /* Acción de volver */ }
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_back),
