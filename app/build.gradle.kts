@@ -68,25 +68,25 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // navagation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    implementation(libs.androidx.navigation.compose)
 
 
     //
-    implementation ("androidx.compose.ui:ui:1.5.1")
-    implementation ("androidx.compose.material:material:1.5.1")
-    implementation ("androidx.compose.ui:ui-tooling-preview:1.5.1")
-    implementation ("androidx.compose.foundation:foundation:1.5.1")
+    implementation (libs.ui)
+    implementation (libs.androidx.material)
+    implementation (libs.ui.tooling.preview)
+    implementation (libs.androidx.foundation.v151)
 
     // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation (libs.retrofit)
+    implementation (libs.converter.gson)
     // Coroutines
-    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.0")
+    implementation (libs.kotlinx.coroutines.android)
     // https://mvnrepository.com/artifact/io.coil-kt/coil-compose
-    implementation("io.coil-kt:coil-compose:2.7.0")
+    implementation(libs.coil.compose)
 
 
-    implementation ("androidx.compose.runtime:runtime:1.0.0")
-    implementation ("androidx.compose.foundation:foundation:1.0.0")
+    implementation (libs.androidx.runtime)
+    implementation (libs.foundation)
 
 }
