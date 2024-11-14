@@ -332,7 +332,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Método de Pago: ${payment.paymentMethod}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Cantidad de Órdenes: ${payment.quantity}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Cantidad de Órdenes: ${payment.quantity}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -361,7 +361,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Envío: ${shipping.hierarchyShip}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Monto de Ventas por Envío: $${shipping.salesAmountByShip}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Monto de Ventas por Envío: $${shipping.salesAmountByShip}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -389,7 +389,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Envío: ${taxShipping.hierarchyShip}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Impuestos Totales: $${taxShipping.sumOfTaxAmount}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Impuestos Totales: $${taxShipping.sumOfTaxAmount}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -417,7 +417,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Categoria: ${product.hierarchyClassification}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Cantidad Totales: ${product.sumOfQuantity}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Cantidad Totales: ${product.sumOfQuantity}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -445,7 +445,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Año Fiscal: ${fiscalYear.hierarchyFiscal}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Costo de Envío: ${fiscalYear.sumOfShippingCost}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Costo de Envío: ${fiscalYear.sumOfShippingCost}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -473,8 +473,8 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Marca: ${brand.hierarchyClassification}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Precio Total: $${"%,.2f".format(brand.kpiTotalPrice)}", fontSize = 16.sp, color = Color(0xFF757575))
-                            Text(text = "Suma de Cantidad: ${brand.sumOfQuantity}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Precio Total: $${"%,.2f".format(brand.kpiTotalPrice)}", fontSize = 16.sp, color = Color(0xFF86EFAC))
+                            Text(text = "Suma de Cantidad: ${brand.sumOfQuantity}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -502,7 +502,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Compañía de Envío: ${company.shippingCompany}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Ventas totales: $${company.salesAmountByShip}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Ventas totales: $${company.salesAmountByShip}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -530,7 +530,7 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(text = "Orden: ${status.hierarchyOrder}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Cantidad de Entrega: ${status.kpiOrderQuantityDelivery}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Cantidad de Entrega: ${status.kpiOrderQuantityDelivery}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
@@ -558,8 +558,8 @@ fun StatisticsPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp, bottom  = 30.dp, top = 10.dp)
                         ) {
                             Text(text = "Mes: ${month.hierarchyDate}", fontSize = 18.sp, fontWeight = FontWeight.Bold)
-                            Text(text = "Ventas Totales: $${"%,.2f".format(month.kpiTotalPrice)}", fontSize = 16.sp, color = Color(0xFF757575))
-                            Text(text = "Cantidad vendida: ${month.sumOfQuantity}", fontSize = 16.sp, color = Color(0xFF757575))
+                            Text(text = "Ventas Totales: $${"%,.2f".format(month.kpiTotalPrice)}", fontSize = 16.sp, color = Color(0xFF86EFAC))
+                            Text(text = "Cantidad vendida: ${month.sumOfQuantity}", fontSize = 16.sp, color = Color(0xFF86EFAC))
                         }
                     }
                 }
