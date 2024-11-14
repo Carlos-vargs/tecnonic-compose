@@ -1,5 +1,7 @@
 package com.example.tecnonic_compose
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -16,7 +18,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.tecnonic_compose.ui.screens.ChangePasswordScreen
+import com.example.tecnonic_compose.ui.screens.EditProfileScreen
 import com.example.tecnonic_compose.ui.screens.LanguageScreen
+import com.example.tecnonic_compose.ui.screens.ProfileScreen
 import com.example.tecnonic_compose.ui.screens.RegisterScreen
 import com.example.tecnonic_compose.ui.screens.TermsConditionsScreen
 import com.example.tecnonic_compose.ui.theme.TecnoniccomposeTheme
@@ -37,13 +41,23 @@ class SettingActivity : ComponentActivity() {
                     "changePassword" -> ChangePasswordScreen()
                     "privacyPolicy" -> TermsConditionsScreen()
                     "register" -> RegisterScreen()
+                    "profile" -> ProfileScreen()
+                    "editProfile" -> EditProfileScreen()
                     else -> DefaultScreen()
                 }
             }
         }
     }
-}
 
+    companion object {
+        // Helper function to simplify intent creation for different screens
+        fun createIntent(context: Context, screen: String): Intent {
+            return Intent(context, SettingActivity::class.java).apply {
+                putExtra("screen", screen)
+            }
+        }
+    }
+}
 
 @Composable
 fun DefaultScreen() {
