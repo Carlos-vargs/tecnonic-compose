@@ -28,6 +28,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tecnonic_compose.ProductMostSold
 import com.example.tecnonic_compose.RetrofitClientMongo
+import com.example.tecnonic_compose.SatisfactionRate
+import com.example.tecnonic_compose.UserResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -36,6 +38,13 @@ import retrofit2.Response
 fun IndicatorPage(modifier: Modifier = Modifier) {
     var productMostSoldData by remember { mutableStateOf<List<ProductMostSold>?>(null) }
     var isProductMostSoldLoading by remember { mutableStateOf(true) }
+
+    var satisfactionRateData by remember { mutableStateOf<List<SatisfactionRate>?>(null) }
+    var isSatisfactionRateLoading by remember { mutableStateOf(true) }
+
+    var userResponseData by remember { mutableStateOf<List<UserResponse>?>(null) }
+    var isUserResponseLoading by remember { mutableStateOf(true) }
+
 
     // Fetch data for each category
     LaunchedEffect(Unit) {
@@ -56,6 +65,39 @@ fun IndicatorPage(modifier: Modifier = Modifier) {
             }
         })
 
+        // User Satisfaction Data fetching
+        RetrofitClientMongo.apiServiceMongo.getSatisfactionRate().enqueue(object : Callback<List<SatisfactionRate>> {
+            override fun onResponse(call: Call<List<SatisfactionRate>>, response: Response<List<SatisfactionRate>>) {
+                if (response.isSuccessful) {
+                    satisfactionRateData = response.body()
+                } else {
+                    Log.e("API Error", "User Satisfaction Response failed")
+                }
+                isSatisfactionRateLoading = false
+            }
+
+            override fun onFailure(call: Call<List<SatisfactionRate>>, t: Throwable) {
+                Log.e("API Error", "Error: ${t.message}")
+                isSatisfactionRateLoading = false
+            }
+        })
+
+        // User Response Data fetching
+        RetrofitClientMongo.apiServiceMongo.getUserResponse().enqueue(object : Callback<List<UserResponse>> {
+            override fun onResponse(call: Call<List<UserResponse>>, response: Response<List<UserResponse>>) {
+                if (response.isSuccessful) {
+                    userResponseData = response.body()
+                } else {
+                    Log.e("API Error", "User Response failed")
+                }
+                isUserResponseLoading = false
+            }
+
+            override fun onFailure(call: Call<List<UserResponse>>, t: Throwable) {
+                Log.e("API Error", "Error: ${t.message}")
+                isUserResponseLoading = false
+            }
+        })
     }
 
     // Column layout with scroll support
@@ -86,7 +128,7 @@ fun IndicatorPage(modifier: Modifier = Modifier) {
         )
 
         // Show loading indicator while data is being fetched
-        if (isProductMostSoldLoading) {
+        if (isProductMostSoldLoading || isSatisfactionRateLoading || isUserResponseLoading) {
             CircularProgressIndicator()
         } else {
             // Show product most sold data
@@ -111,7 +153,7 @@ fun IndicatorPage(modifier: Modifier = Modifier) {
                                 .padding(16.dp)
                         ) {
                             Text(
-                                text = "Producto: ${item.id}",
+                                text = "Producto: ${item.name}",
                                 fontSize = 20.sp,
                                 fontWeight = FontWeight.Bold
                             )
@@ -125,6 +167,77 @@ fun IndicatorPage(modifier: Modifier = Modifier) {
                 }
             }
 
+            // Show satisfaction rate data
+            satisfactionRateData?.let { data ->
+                Text(
+                    text = "Conteo de Satisfacción",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
+                    modifier = Modifier.padding(bottom = 20.dp, end = 10.dp, start = 10.dp, top = 20.dp )
+                )
+                data.forEach { item ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        shape = RoundedCornerShape(16.dp),
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .background(Color(0xFFF0F4F8))
+                                .padding(16.dp)
+                        ) {
+                            Text(
+                                text = "Satisfacción: ${item.satisfaction}",
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = "Conteo: ${item.satisfactionRate}",
+                                fontSize = 18.sp,
+                                color = Color.Gray
+                            )
+                        }
+                    }
+                }
+            }
+
+            // Show user response data
+            userResponseData?.let { data ->
+                Text(
+                    text = "FAQ usuarios con mas preguntas",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.Black,
+                    modifier = Modifier.padding(bottom = 20.dp, end = 10.dp, start = 10.dp, top = 20.dp )
+                )
+                data.forEach { item ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(8.dp),
+                        shape = RoundedCornerShape(16.dp),
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .background(Color(0xFFF0F4F8))
+                                .padding(16.dp)
+                        ) {
+                            Text(
+                                text = "Usuario: ${item.userId}",
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                text = "Preguntas: ${item.totalQuestions}",
+                                fontSize = 18.sp,
+                                color = Color.Gray
+                            )
+                        }
+                    }
+                }
+            }
         }
     }
 

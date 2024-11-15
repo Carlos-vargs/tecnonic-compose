@@ -7,4 +7,9 @@ interface ApiServiceMongo {
     @GET("Pedido/productos_mas_vendidos")
     fun getProductsMostSold(): Call<List<ProductMostSold>>
 
+    @GET ("ComentariosValoraciones/contar_por_satisfaccion")
+    fun getSatisfactionRate(): Call<List<SatisfactionRate>>
+
+    @GET("FAQ/clientes_mas_preguntas")
+    fun getUserResponse(): Call<List<UserResponse>>
 }
