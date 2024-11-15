@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
-import com.example.tecnonic_compose.SettingActivity
 
 @Composable
 fun CustomOutlinedTextField(
@@ -58,7 +57,7 @@ fun CustomOutlinedTextField(
                 Icon(
                     painter = painterResource(id = leadingIcon),
                     contentDescription = null,
-                    modifier = Modifier.size(28.dp),
+                    modifier = Modifier.size(24.dp),
                     tint = Color.Gray
                 )
             },
@@ -84,15 +83,14 @@ fun RegisterScreen() {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
-    val context = LocalContext.current  // Obtiene el contexto de la aplicación
+    val context = LocalContext.current
 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(top = 65.dp, start = 16.dp, end = 16.dp), // Ajuste de padding
-        horizontalAlignment = Alignment.Start
+            .padding(top = 65.dp, start = 16.dp, end = 16.dp),
+        horizontalAlignment = Alignment.Start // Mantiene el botón a la izquierda
     ) {
-        // Botón de "volver" en un círculo
         IconButton(
             onClick = {
                 val intent = Intent(context, MainActivity::class.java)
@@ -101,67 +99,68 @@ fun RegisterScreen() {
             },
             modifier = Modifier
                 .size(40.dp)
-                .background(Color(0xFFF4F4F4), CircleShape) // Fondo circular
+                .background(Color(0xFFF4F4F4), CircleShape)
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_back),
                 contentDescription = "Volver",
-                tint = Color.Black, // Color del ícono
-                modifier = Modifier.size(24.dp) // Tamaño del ícono
+                tint = Color.Black,
+                modifier = Modifier.size(24.dp)
             )
         }
 
-        Spacer(modifier = Modifier.height(16.dp)) // Espaciado debajo del botón "volver"
+        Spacer(modifier = Modifier.height(16.dp))
 
+        // Texto "Registrarse" centrado
         Text(
             text = "Registrarse",
             fontSize = 28.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 20.dp, top = 20.dp, start = 100.dp)
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 20.dp, top = 20.dp)
+                .wrapContentWidth(Alignment.CenterHorizontally) // Centra solo el texto
         )
 
         Spacer(modifier = Modifier.height(24.dp))
 
-        // Campo de Nombre Completo
         CustomOutlinedTextField(
             value = fullName,
             onValueChange = { fullName = it },
             label = "Nombre Completo",
             placeholder = "Ejemplo: Juan Pérez",
-            leadingIcon = R.drawable.ic_email // Reemplaza con el ícono adecuado
+            leadingIcon = R.drawable.ic_email // Ajuste del ícono
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Campo de Número de Teléfono
         CustomOutlinedTextField(
             value = phoneNumber,
             onValueChange = { phoneNumber = it },
             label = "Número de Teléfono",
             placeholder = "+505 00000000",
-            leadingIcon = R.drawable.ic_phone // Reemplaza con el ícono adecuado
+            leadingIcon = R.drawable.ic_phone
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Campo de Correo Electrónico
         CustomOutlinedTextField(
             value = email,
             onValueChange = { email = it },
             label = "Correo Electrónico",
             placeholder = "ejemplo@gmail.com",
-            leadingIcon = R.drawable.ic_email // Reemplaza con el ícono adecuado
+            leadingIcon = R.drawable.ic_email
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
-        // Campo de contraseña personalizado
         androidx.compose.material3.Text(
             text = "Contraseña",
             color = Color.Gray,
             fontSize = 14.sp,
             fontWeight = FontWeight.Medium,
-            modifier = Modifier.padding(bottom = 8.dp)
+            modifier = Modifier.padding(start = 16.dp, end = 16.dp),
+
         )
 
         Box(
@@ -177,8 +176,9 @@ fun RegisterScreen() {
                     painter = painterResource(id = R.drawable.ic_lock),
                     contentDescription = "Contraseña",
                     tint = Color.Gray,
-                    modifier = Modifier.size(28.dp)
-                        .padding(end = 8.dp) // Tamaño del ícono de candado
+                    modifier = Modifier
+                        .size(33.dp)
+                        .padding(start = 10.dp)
                 )
 
                 BasicTextField(
@@ -193,27 +193,28 @@ fun RegisterScreen() {
                     ),
                     decorationBox = { innerTextField ->
                         if (password.isEmpty()) {
-                            androidx.compose.material3.Text("******", color = Color.Gray, fontSize = 16.sp)
+                            androidx.compose.material3.Text("**********", color = Color.Gray, fontSize = 16.sp)
                         }
                         innerTextField()
                     },
                     modifier = Modifier
                         .weight(1f)
                         .background(Color.Transparent)
+                        .padding(start = 19.dp)
                 )
 
+                // Ícono de visibilidad de contraseña
                 androidx.compose.material3.IconButton(onClick = {
                     passwordVisible = !passwordVisible
                 }) {
                     androidx.compose.material3.Icon(
-                        painter = painterResource(id = R.drawable.ic_visibility), // Icono para alternar visibilidad
+                        painter = painterResource(id = R.drawable.ic_visibility),
                         contentDescription = if (passwordVisible) "Ocultar contraseña" else "Mostrar contraseña",
                         tint = Color.Gray,
-                        modifier = Modifier.size(24.dp) // Tamaño del ícono de visibilidad
+                        modifier = Modifier.size(24.dp)
                     )
                 }
             }
-            // Línea inferior personalizada
             Box(
                 modifier = Modifier
                     .height(1.dp)
