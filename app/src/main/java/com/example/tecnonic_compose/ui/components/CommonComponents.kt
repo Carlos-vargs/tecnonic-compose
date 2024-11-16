@@ -37,7 +37,7 @@ fun Header(title: String, onBackPressed: () -> Unit) {
     ) {
         IconButton(onClick = onBackPressed) {
             Icon(
-                imageVector = ImageVector.vectorResource(id = R.drawable.ic_launcher_foreground), // Reemplaza con el icono de flecha
+                imageVector = ImageVector.vectorResource(id = R.drawable.ic_back), // Reemplaza con el icono de flecha
                 contentDescription = "Regresar"
             )
         }

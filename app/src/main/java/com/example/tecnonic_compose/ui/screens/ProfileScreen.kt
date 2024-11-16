@@ -1,6 +1,7 @@
 package com.example.tecnonic_compose.ui.screens
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -13,13 +14,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.tecnonic_compose.R
 import com.example.tecnonic_compose.SettingActivity
-import com.example.tecnonic_compose.ui.components.Header
 
 @Composable
 fun ProfileScreen() {
@@ -48,7 +48,7 @@ fun ProfileScreen() {
             verticalAlignment = Alignment.CenterVertically
         ) {
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground), // Reemplazar con la imagen real
+                painter = painterResource(id = R.drawable.ic_profile), // Reemplazar con la imagen real
                 contentDescription = "Profile Picture",
                 modifier = Modifier
                     .size(60.dp)
@@ -69,7 +69,7 @@ fun ProfileScreen() {
 
         // Lista de opciones en el perfil
         ProfileOptionItem(
-            icon = R.drawable.ic_launcher_foreground, // Cambia con el ícono correcto
+            icon = R.drawable.ic_userprofile, // Cambia con el ícono correcto
             title = "Informacion Personal",
             onClick = { /* Acción para Informacion Personal */ }
         )
@@ -77,7 +77,7 @@ fun ProfileScreen() {
         Spacer(modifier = Modifier.height(16.dp))
 
         ProfileOptionItem(
-            icon = R.drawable.ic_launcher_foreground, // Cambia con el ícono correcto
+            icon = R.drawable.ic_settings, // Cambia con el ícono correcto
             title = "Ajustes",
             onClick = { /* Acción para Ajustes */ }
         )
@@ -98,10 +98,17 @@ fun HeaderWithEditButton(
             .padding(vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = onBackPressed) {
+        IconButton(
+            onClick = onBackPressed,
+            modifier = Modifier
+                .size(40.dp)
+                .clip(CircleShape)
+                .background(Color(0xFFF4F4F4))
+        ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground), // Reemplaza con el ícono de retroceso
-                contentDescription = "Back"
+                painter = painterResource(id = R.drawable.ic_back), // Reemplaza con el ícono de retroceso
+                contentDescription = "Back",
+                tint = Color.Black // Cambia el color del icono si es necesario
             )
         }
 
@@ -112,12 +119,12 @@ fun HeaderWithEditButton(
             style = MaterialTheme.typography.titleLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.weight(1f),
-            textAlign = androidx.compose.ui.text.style.TextAlign.Center
+            textAlign = TextAlign.Center
         )
 
         IconButton(onClick = onEditClicked) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground), // Reemplaza con el ícono de editar
+                painter = painterResource(id = R.drawable.ic_group), // Reemplaza con el ícono de editar
                 contentDescription = "Edit"
             )
         }
@@ -155,7 +162,7 @@ fun ProfileOptionItem(
         )
 
         Icon(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground), // Replace with arrow icon
+            painter = painterResource(id = R.drawable.ic_go), // Replace with arrow icon
             contentDescription = null,
             tint = Color.Gray
         )

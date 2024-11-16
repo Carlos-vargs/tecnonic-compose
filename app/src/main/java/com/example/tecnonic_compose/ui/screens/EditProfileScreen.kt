@@ -11,6 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tecnonic_compose.R
@@ -39,7 +40,7 @@ fun EditProfileScreen() {
 
         // Profile picture centered with circular shape
         Image(
-            painter = painterResource(id = R.drawable.ic_launcher_foreground), // Replace with actual profile picture resource
+            painter = painterResource(id = R.drawable.ic_profile), // Replace with actual profile picture resource
             contentDescription = "Profile Picture",
             modifier = Modifier
                 .size(90.dp)
@@ -63,7 +64,7 @@ fun EditProfileScreen() {
             label = "Nombre Completo",
             value = fullName,
             onValueChange = { fullName = it },
-            leadingIcon = R.drawable.ic_launcher_foreground // Replace with an appropriate icon resource
+            leadingIcon = R.drawable.ic_userprofile // Replace with an appropriate icon resource
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -73,7 +74,7 @@ fun EditProfileScreen() {
             label = "Correo Electronico",
             value = email,
             onValueChange = { email = it },
-            leadingIcon = R.drawable.ic_launcher_foreground // Replace with an appropriate icon resource
+            leadingIcon = R.drawable.ic_email // Replace with an appropriate icon resource
         )
 
         Spacer(modifier = Modifier.height(16.dp))
@@ -83,7 +84,7 @@ fun EditProfileScreen() {
             label = "Numero de Telefono",
             value = phoneNumber,
             onValueChange = { phoneNumber = it },
-            leadingIcon = R.drawable.ic_launcher_foreground // Replace with an appropriate icon resource
+            leadingIcon = R.drawable.ic_phone // Replace with an appropriate icon resource
         )
 
         Spacer(modifier = Modifier.height(32.dp))
@@ -117,8 +118,8 @@ fun ProfileInputField(
             modifier = Modifier.padding(bottom = 4.dp)
         )
 
-        // Input field with icon
-        OutlinedTextField(
+        // Input field with only bottom border
+        TextField(
             value = value,
             onValueChange = onValueChange,
             leadingIcon = {
@@ -128,11 +129,21 @@ fun ProfileInputField(
                     tint = Color.Gray
                 )
             },
-            modifier = Modifier.fillMaxWidth(),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedBorderColor = Color.Gray,
-                unfocusedBorderColor = Color.LightGray
-            )
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 8.dp),
+            colors = TextFieldDefaults.textFieldColors(
+                containerColor = Color.Transparent,
+                focusedIndicatorColor = Color.Gray,
+                unfocusedIndicatorColor = Color.LightGray
+            ),
+            singleLine = true
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EditProfileScreenPreview() {
+    EditProfileScreen()
 }

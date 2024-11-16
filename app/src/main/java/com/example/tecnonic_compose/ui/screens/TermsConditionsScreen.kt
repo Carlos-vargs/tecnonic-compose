@@ -7,6 +7,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tecnonic_compose.ui.components.Header
@@ -57,4 +58,10 @@ fun TermsContent() {
 
         // Agrega más párrafos aquí según sea necesario
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun TermsScreenPreview() {
+    TermsConditionsScreen()
 }
