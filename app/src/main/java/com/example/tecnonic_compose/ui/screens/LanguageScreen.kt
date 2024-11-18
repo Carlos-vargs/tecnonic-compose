@@ -13,7 +13,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.tecnonic_compose.R
 import com.example.tecnonic_compose.ui.components.Header
+import com.example.tecnonic_compose.ui.components.RoundedCheckbox
 
 data class Language(
     val name: String,
@@ -29,15 +31,12 @@ fun LanguageScreen() {
     var languages by remember {
         mutableStateOf(
             listOf(
-                Language("Español", android.R.drawable.ic_menu_gallery),
-                Language("English", android.R.drawable.ic_menu_gallery),
-                Language("Français", android.R.drawable.ic_menu_gallery),
-                Language("Deutsch", android.R.drawable.ic_menu_gallery),
-                Language("Italiano", android.R.drawable.ic_menu_gallery),
-                Language("Português", android.R.drawable.ic_menu_gallery),
-                Language("日本語", android.R.drawable.ic_menu_gallery),
-                Language("한국어", android.R.drawable.ic_menu_gallery),
-                Language("中文", android.R.drawable.ic_menu_gallery)
+                Language("Español", R.drawable.ic_spain_flag),
+                Language("English", R.drawable.ic_usa_flag),
+                Language("Français", R.drawable.ic_france_flag),
+                Language("Australia", R.drawable.ic_australia_flag),
+                Language("Vietnam", R.drawable.ic_vietnam_flag),
+
             )
         )
     }
@@ -59,7 +58,7 @@ fun LanguageScreen() {
         OutlinedTextField(
             value = searchQuery,
             onValueChange = { searchQuery = it },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth().height(48.dp),
             placeholder = { Text("Buscar") },
             leadingIcon = {
                 Icon(
@@ -104,11 +103,10 @@ fun LanguageItem(
             .padding(vertical = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        // Bandera (usando un icono temporal de Android)
         Image(
             painter = painterResource(id = language.flag),
             contentDescription = "Bandera de ${language.name}",
-            modifier = Modifier.size(24.dp)
+            modifier = Modifier.size(48.dp)
         )
 
         Spacer(modifier = Modifier.width(16.dp))
