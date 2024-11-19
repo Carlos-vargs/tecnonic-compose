@@ -1,5 +1,6 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -10,9 +11,11 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
 import com.example.tecnonic_compose.ui.components.Header
 import com.example.tecnonic_compose.ui.components.RoundedCheckbox
@@ -26,7 +29,7 @@ data class Language(
 @Composable
 fun LanguageScreen() {
     var searchQuery by remember { mutableStateOf("") }
-
+    val context = LocalContext.current
     // Lista de ejemplo de idiomas
     var languages by remember {
         mutableStateOf(
@@ -49,7 +52,11 @@ fun LanguageScreen() {
         // Header
         Header(
             title = "Lenguaje",
-            onBackPressed = { /* Acción para regresar */ }
+            onBackPressed = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("setting", "back")
+                context.startActivity(intent)
+            }
         )
 
         Spacer(modifier = Modifier.height(16.dp))

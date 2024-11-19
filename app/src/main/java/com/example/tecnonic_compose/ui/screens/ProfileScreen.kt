@@ -1,5 +1,6 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,6 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
 import com.example.tecnonic_compose.SettingActivity
 
@@ -38,8 +40,9 @@ fun ProfileScreen() {
                 // Navega a EditProfileScreen usando el Intent de SettingActivity
                 context.startActivity(SettingActivity.createIntent(context, "editProfile"))
             },
-            onBackPressed = { /* Implementar acción para retroceso si es necesario */ }
+            onBackPressed = { /* Implementar acción para retroceso si es necesario */ },
         )
+
 
         Spacer(modifier = Modifier.height(24.dp))
 
@@ -90,8 +93,10 @@ fun ProfileScreen() {
 fun HeaderWithEditButton(
     title: String,
     onEditClicked: () -> Unit,
-    onBackPressed: () -> Unit
+    onBackPressed: () -> Unit,
 ) {
+    val context = LocalContext.current // Obtener el contexto para la navegación
+
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -99,16 +104,20 @@ fun HeaderWithEditButton(
         verticalAlignment = Alignment.CenterVertically
     ) {
         IconButton(
-            onClick = onBackPressed,
+            onClick = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("setting", "back")
+                context.startActivity(intent)
+            },
             modifier = Modifier
                 .size(40.dp)
-                .clip(CircleShape)
-                .background(Color(0xFFF4F4F4))
+                .background(Color(0xFFF4F4F4), CircleShape)
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.ic_back), // Reemplaza con el ícono de retroceso
-                contentDescription = "Back",
-                tint = Color.Black // Cambia el color del icono si es necesario
+                painter = painterResource(id = R.drawable.ic_back),
+                contentDescription = "Volver",
+                tint = Color.Black,
+                modifier = Modifier.size(24.dp)
             )
         }
 

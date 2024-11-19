@@ -1,6 +1,8 @@
 package com.example.tecnonic_compose.ui.components
 
+import android.content.Intent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -9,7 +11,9 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
@@ -18,6 +22,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
 
 @Composable
@@ -39,10 +44,17 @@ fun Header(title: String, onBackPressed: () -> Unit) {
             .padding(vertical = 16.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        IconButton(onClick = onBackPressed) {
+        IconButton(
+            onClick = onBackPressed,
+            modifier = Modifier
+                .size(40.dp)
+                .background(Color(0xFFF4F4F4), CircleShape)
+        ) {
             Icon(
-                imageVector = ImageVector.vectorResource(id = R.drawable.ic_back), // Reemplaza con el icono de flecha
-                contentDescription = "Regresar"
+                painter = painterResource(id = R.drawable.ic_back),
+                contentDescription = "Volver",
+                tint = Color.Black,
+                modifier = Modifier.size(24.dp)
             )
         }
         Spacer(modifier = Modifier.width(8.dp))

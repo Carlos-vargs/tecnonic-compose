@@ -1,5 +1,6 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -9,11 +10,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
 import com.example.tecnonic_compose.ui.components.Header
 import com.example.tecnonic_compose.ui.components.Paragraph
@@ -30,10 +33,16 @@ fun EditProfileScreen() {
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        val context = LocalContext.current // Obtener el contexto para la navegación
+
         // Header with title and back button
         Header(
             title = "Editar Profile",
-            onBackPressed = { /* handle back action */ }
+            onBackPressed = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("setting", "back")
+                context.startActivity(intent)
+            }
         )
 
         Spacer(modifier = Modifier.height(24.dp))

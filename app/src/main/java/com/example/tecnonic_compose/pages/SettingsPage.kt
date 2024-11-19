@@ -53,7 +53,7 @@ fun SettingsPage() {
                 textAlign = TextAlign.Center
             )
             Spacer(modifier = Modifier.weight(1f))
-            Box(
+            /*Box(
                 modifier = Modifier
                     .size(40.dp)
                     .background(Color.Gray.copy(alpha = 0.2f), shape = CircleShape)
@@ -66,7 +66,7 @@ fun SettingsPage() {
                     tint = Color.Gray,
                     modifier = Modifier.size(24.dp)
                 )
-            }
+            }*/
         }
 
         // Sección General

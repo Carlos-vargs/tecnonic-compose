@@ -1,5 +1,6 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
@@ -10,6 +11,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -18,6 +20,7 @@ import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.R
 
 @Composable
@@ -28,6 +31,7 @@ fun ChangePasswordScreen() {
     var passwordVisibleCurrent by remember { mutableStateOf(false) }
     var passwordVisibleNew by remember { mutableStateOf(false) }
     var passwordVisibleConfirm by remember { mutableStateOf(false) }
+    val context = LocalContext.current // Obtener el contexto para la navegación
 
     Column(
         modifier = Modifier
@@ -36,7 +40,11 @@ fun ChangePasswordScreen() {
     ) {
         Header(
             title = "Cambiar Contraseña",
-            onBackPressed = { /* Implementar navegación hacia atrás */ }
+            onBackPressed = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("setting", "back")
+                context.startActivity(intent)
+            }
         )
 
         Spacer(modifier = Modifier.height(24.dp))

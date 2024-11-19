@@ -1,20 +1,25 @@
 package com.example.tecnonic_compose.ui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tecnonic_compose.MainActivity
 import com.example.tecnonic_compose.ui.components.Header
 import com.example.tecnonic_compose.ui.components.Paragraph
 
 @Composable
 fun TermsConditionsScreen() {
+    val context = LocalContext.current // Obtener el contexto para la navegación
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -23,7 +28,11 @@ fun TermsConditionsScreen() {
         // Header con el botón de regresar y el título
         Header(
             title = "Términos y Condiciones",
-            onBackPressed = { /* Accion para regresar a la pantalla anterior */ }
+            onBackPressed = {
+                val intent = Intent(context, MainActivity::class.java)
+                intent.putExtra("setting", "back")
+                context.startActivity(intent)
+            }
         )
 
         Spacer(modifier = Modifier.height(16.dp))
